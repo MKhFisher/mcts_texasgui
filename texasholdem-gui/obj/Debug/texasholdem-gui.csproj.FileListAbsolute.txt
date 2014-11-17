@@ -1,0 +1,9 @@
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\bin\Debug\texasholdem-gui.exe.config
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\bin\Debug\texasholdem-gui.exe
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\bin\Debug\texasholdem-gui.pdb
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem-gui.csprojResolveAssemblyReference.cache
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem_gui.Properties.Resources.resources
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem-gui.csproj.GenerateResource.Cache
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem-gui.exe
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem-gui.pdb
+c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem_gui.Form1.resources
