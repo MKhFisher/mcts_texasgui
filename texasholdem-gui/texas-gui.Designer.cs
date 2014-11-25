@@ -92,6 +92,27 @@
             this.tb_flop = new System.Windows.Forms.TextBox();
             this.tb_turn = new System.Windows.Forms.TextBox();
             this.tb_river = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tb_royal_flush = new System.Windows.Forms.TextBox();
+            this.tb_four_of_a_kind = new System.Windows.Forms.TextBox();
+            this.tb_flush = new System.Windows.Forms.TextBox();
+            this.tb_three_of_a_kind = new System.Windows.Forms.TextBox();
+            this.tb_pair = new System.Windows.Forms.TextBox();
+            this.tb_straight_flush = new System.Windows.Forms.TextBox();
+            this.tb_full_house = new System.Windows.Forms.TextBox();
+            this.tb_straight = new System.Windows.Forms.TextBox();
+            this.tb_two_pair = new System.Windows.Forms.TextBox();
+            this.tb_high_card = new System.Windows.Forms.TextBox();
+            this.bt_reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -714,7 +735,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(283, 48);
+            this.label6.Location = new System.Drawing.Point(408, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 13);
             this.label6.TabIndex = 57;
@@ -723,7 +744,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(283, 87);
+            this.label7.Location = new System.Drawing.Point(283, 51);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 13);
             this.label7.TabIndex = 58;
@@ -732,7 +753,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(283, 126);
+            this.label8.Location = new System.Drawing.Point(408, 51);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 59;
@@ -747,30 +768,221 @@
             // 
             // tb_flop
             // 
-            this.tb_flop.Location = new System.Drawing.Point(250, 64);
+            this.tb_flop.Location = new System.Drawing.Point(372, 25);
             this.tb_flop.Name = "tb_flop";
             this.tb_flop.Size = new System.Drawing.Size(100, 20);
             this.tb_flop.TabIndex = 61;
             // 
             // tb_turn
             // 
-            this.tb_turn.Location = new System.Drawing.Point(250, 103);
+            this.tb_turn.Location = new System.Drawing.Point(250, 67);
             this.tb_turn.Name = "tb_turn";
             this.tb_turn.Size = new System.Drawing.Size(100, 20);
             this.tb_turn.TabIndex = 62;
             // 
             // tb_river
             // 
-            this.tb_river.Location = new System.Drawing.Point(250, 141);
+            this.tb_river.Location = new System.Drawing.Point(372, 67);
             this.tb_river.Name = "tb_river";
             this.tb_river.Size = new System.Drawing.Size(100, 20);
             this.tb_river.TabIndex = 63;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(267, 98);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(62, 13);
+            this.label9.TabIndex = 64;
+            this.label9.Text = "Royal Flush";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(388, 98);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 13);
+            this.label10.TabIndex = 65;
+            this.label10.Text = "Straight Flush";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(264, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 13);
+            this.label11.TabIndex = 66;
+            this.label11.Text = "Four of a Kind";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(394, 144);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 13);
+            this.label12.TabIndex = 67;
+            this.label12.Text = "Full House";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(284, 190);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(32, 13);
+            this.label13.TabIndex = 68;
+            this.label13.Text = "Flush";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(401, 190);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(43, 13);
+            this.label14.TabIndex = 69;
+            this.label14.Text = "Straight";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(258, 237);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(80, 13);
+            this.label15.TabIndex = 70;
+            this.label15.Text = "Three of a Kind";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(399, 237);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(49, 13);
+            this.label16.TabIndex = 71;
+            this.label16.Text = "Two Pair";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(287, 283);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(25, 13);
+            this.label17.TabIndex = 72;
+            this.label17.Text = "Pair";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(397, 283);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(54, 13);
+            this.label18.TabIndex = 73;
+            this.label18.Text = "High Card";
+            // 
+            // tb_royal_flush
+            // 
+            this.tb_royal_flush.Location = new System.Drawing.Point(250, 118);
+            this.tb_royal_flush.Name = "tb_royal_flush";
+            this.tb_royal_flush.Size = new System.Drawing.Size(100, 20);
+            this.tb_royal_flush.TabIndex = 74;
+            // 
+            // tb_four_of_a_kind
+            // 
+            this.tb_four_of_a_kind.Location = new System.Drawing.Point(250, 163);
+            this.tb_four_of_a_kind.Name = "tb_four_of_a_kind";
+            this.tb_four_of_a_kind.Size = new System.Drawing.Size(100, 20);
+            this.tb_four_of_a_kind.TabIndex = 75;
+            // 
+            // tb_flush
+            // 
+            this.tb_flush.Location = new System.Drawing.Point(250, 210);
+            this.tb_flush.Name = "tb_flush";
+            this.tb_flush.Size = new System.Drawing.Size(100, 20);
+            this.tb_flush.TabIndex = 76;
+            // 
+            // tb_three_of_a_kind
+            // 
+            this.tb_three_of_a_kind.Location = new System.Drawing.Point(250, 257);
+            this.tb_three_of_a_kind.Name = "tb_three_of_a_kind";
+            this.tb_three_of_a_kind.Size = new System.Drawing.Size(100, 20);
+            this.tb_three_of_a_kind.TabIndex = 77;
+            // 
+            // tb_pair
+            // 
+            this.tb_pair.Location = new System.Drawing.Point(250, 300);
+            this.tb_pair.Name = "tb_pair";
+            this.tb_pair.Size = new System.Drawing.Size(100, 20);
+            this.tb_pair.TabIndex = 78;
+            // 
+            // tb_straight_flush
+            // 
+            this.tb_straight_flush.Location = new System.Drawing.Point(372, 118);
+            this.tb_straight_flush.Name = "tb_straight_flush";
+            this.tb_straight_flush.Size = new System.Drawing.Size(100, 20);
+            this.tb_straight_flush.TabIndex = 79;
+            // 
+            // tb_full_house
+            // 
+            this.tb_full_house.Location = new System.Drawing.Point(372, 164);
+            this.tb_full_house.Name = "tb_full_house";
+            this.tb_full_house.Size = new System.Drawing.Size(100, 20);
+            this.tb_full_house.TabIndex = 80;
+            // 
+            // tb_straight
+            // 
+            this.tb_straight.Location = new System.Drawing.Point(372, 210);
+            this.tb_straight.Name = "tb_straight";
+            this.tb_straight.Size = new System.Drawing.Size(100, 20);
+            this.tb_straight.TabIndex = 81;
+            // 
+            // tb_two_pair
+            // 
+            this.tb_two_pair.Location = new System.Drawing.Point(372, 257);
+            this.tb_two_pair.Name = "tb_two_pair";
+            this.tb_two_pair.Size = new System.Drawing.Size(100, 20);
+            this.tb_two_pair.TabIndex = 82;
+            // 
+            // tb_high_card
+            // 
+            this.tb_high_card.Location = new System.Drawing.Point(372, 300);
+            this.tb_high_card.Name = "tb_high_card";
+            this.tb_high_card.Size = new System.Drawing.Size(100, 20);
+            this.tb_high_card.TabIndex = 83;
+            // 
+            // bt_reset
+            // 
+            this.bt_reset.Location = new System.Drawing.Point(498, 139);
+            this.bt_reset.Name = "bt_reset";
+            this.bt_reset.Size = new System.Drawing.Size(75, 23);
+            this.bt_reset.TabIndex = 85;
+            this.bt_reset.Text = "Reset";
+            this.bt_reset.UseVisualStyleBackColor = true;
+            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 332);
+            this.ClientSize = new System.Drawing.Size(598, 330);
+            this.Controls.Add(this.bt_reset);
+            this.Controls.Add(this.tb_high_card);
+            this.Controls.Add(this.tb_two_pair);
+            this.Controls.Add(this.tb_straight);
+            this.Controls.Add(this.tb_full_house);
+            this.Controls.Add(this.tb_straight_flush);
+            this.Controls.Add(this.tb_pair);
+            this.Controls.Add(this.tb_three_of_a_kind);
+            this.Controls.Add(this.tb_flush);
+            this.Controls.Add(this.tb_four_of_a_kind);
+            this.Controls.Add(this.tb_royal_flush);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.tb_river);
             this.Controls.Add(this.tb_turn);
             this.Controls.Add(this.tb_flop);
@@ -908,6 +1120,27 @@
         private System.Windows.Forms.TextBox tb_flop;
         private System.Windows.Forms.TextBox tb_turn;
         private System.Windows.Forms.TextBox tb_river;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tb_royal_flush;
+        private System.Windows.Forms.TextBox tb_four_of_a_kind;
+        private System.Windows.Forms.TextBox tb_flush;
+        private System.Windows.Forms.TextBox tb_three_of_a_kind;
+        private System.Windows.Forms.TextBox tb_pair;
+        private System.Windows.Forms.TextBox tb_straight_flush;
+        private System.Windows.Forms.TextBox tb_full_house;
+        private System.Windows.Forms.TextBox tb_straight;
+        private System.Windows.Forms.TextBox tb_two_pair;
+        private System.Windows.Forms.TextBox tb_high_card;
+        private System.Windows.Forms.Button bt_reset;
     }
 }
 

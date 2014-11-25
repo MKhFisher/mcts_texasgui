@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace texasholdem_gui
 {
-    class Game
-    {
-        public enum Suit
+     public enum Suit
         {
             Clubs = 0,
             Diamonds = 1,
             Hearts = 2,
             Spades = 3
         }
-
-        public enum Number
+    
+     public enum Number
         {
             Two = 2,
             Three = 3,
@@ -33,8 +31,8 @@ namespace texasholdem_gui
             King = 13,
             Ace = 14
         }
-
-        public enum Hand
+    
+     public enum Hand
         {
             HighCard = 0,
             Pair = 1,
@@ -47,23 +45,22 @@ namespace texasholdem_gui
             StraightFlush = 8,
             RoyalFlush = 9
         }
-
-        /// <summary>
+    
+     /// <summary>
         /// Card object which holds suit and number.
         /// </summary>
         /// test 
-        public class Card
+     public class Card
         {
             public Suit suit { get; set; }
             public Number number { get; set; }
         }
-
-        /// <summary>
+    
+     /// <summary>
         /// Uses Card class defined above to simulate 52-card playing deck without jokers.
         /// </summary>
-        public class Deck
+     public class Deck
         {
-
             public Deck()
             {
                 // Creates the deck and shuffles, otherwise deck will be created in perfect order. Also opens SQL connection.
@@ -110,300 +107,415 @@ namespace texasholdem_gui
                 return deal_cards;
             }
         }
+    
+     public class SqlEntry
+     {
+         public int player_count;
+         public string pocket;
+         public string flop;
+         public string turn;
+         public string river;
+         public Int64 royal_flush;
+         public Int64 straight_flush;
+         public Int64 four_of_a_kind;
+         public Int64 full_house;
+         public Int64 flush;
+         public Int64 straight;
+         public Int64 three_of_a_kind;
+         public Int64 two_pair;
+         public Int64 pair;
+         public Int64 high_card;
+     }
 
-        public class SqlEntry
-        {
-            public int player_count;
-            public string pocket;
-            public string flop;
-            public string turn;
-            public string river;
-            public Int64 royal_flush;
-            public Int64 straight_flush;
-            public Int64 four_of_a_kind;
-            public Int64 full_house;
-            public Int64 flush;
-            public Int64 straight;
-            public Int64 three_of_a_kind;
-            public Int64 two_pair;
-            public Int64 pair;
-            public Int64 high_card;
-        }
+     public class SummedHandResults
+     {
+         public int player_count;
+         public int position;
+         public string pocket;
+         public string flop;
+         public string turn;
+         public string river;
+         public Int64 royal_flush;
+         public Int64 straight_flush;
+         public Int64 four_of_a_kind;
+         public Int64 full_house;
+         public Int64 flush;
+         public Int64 straight;
+         public Int64 three_of_a_kind;
+         public Int64 two_pair;
+         public Int64 pair;
+         public Int64 high_card;
+         public Int64 total_occurences;
 
-        class Program
-        {
-            static SqlConnection m_connection = null;
+         public void Totals()
+         {
+             Int64 total = 0;
+             total += this.royal_flush + this.straight_flush + this.four_of_a_kind + this.full_house + this.flush + this.straight + this.three_of_a_kind + this.two_pair + this.pair + this.high_card;
+             this.total_occurences = total;
+         }
 
-            static void PlayGames()
-            {
-                Deck deck = new Deck();
-                m_connection = new SqlConnection("Server=localhost;Database=texas;Integrated Security=SSPI;MultipleActiveResultSets=true");
-                m_connection.Open();
+         public double RoyalFlushChance()
+         {
+             double result = 0;
+             result = this.royal_flush * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                int iterations = 10000;
+             return result;
+         }
 
-                //// Test code to ensure Deck class performs as expected.
-                //Hashtable ht = new Hashtable();
-                //int counter = 0;
+         public double StraightFlushChance()
+         {
+             double result = 0;
+             result = this.straight_flush * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                //foreach (Card card in deck.deck)
-                //{
-                //    try
-                //    {
-                //        ht.Add(card, card);
-                //        Console.WriteLine(counter + ". " + card.number + " of " + card.suit);
-                //        counter++;
-                //    }
-                //    catch
-                //    {
-                //        Console.WriteLine("Duplicate card in deck found: " + card.number + ", " + card.suit);
-                //    }
-                //}
+             return result;
+         }
 
-                //TestCardCombinations();
+         public double FourOfAKindChance()
+         {
+             double result = 0;
+             result = this.four_of_a_kind * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                for (int i = 0; i < iterations; i++)
-                {
-                    DealHoldEmHand(deck, 8, 5);
-                    deck = new Deck();
-                }
+             return result;
+         }
 
-                m_connection.Close();
+         public double FullHouseChance()
+         {
+             double result = 0;
+             result = this.full_house * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                Console.WriteLine("Finished.");
-                Console.ReadKey();
-            }
+             return result;
+         }
 
-            public static void TestCardCombinations()
-            {
-                // Deal 7 cards and test combinations.
-                List<Card> hand = new List<Card>();
-                Card card1 = new Card();
-                card1.suit = (Suit)0;
-                card1.number = (Number)14;
-                Card card2 = new Card();
-                card2.suit = (Suit)1;
-                card2.number = (Number)6;
-                Card card3 = new Card();
-                card3.suit = (Suit)2;
-                card3.number = (Number)14;
-                Card card4 = new Card();
-                card4.suit = (Suit)3;
-                card4.number = (Number)14;
-                Card card5 = new Card();
-                card5.suit = (Suit)0;
-                card5.number = (Number)9;
-                Card card6 = new Card();
-                card6.suit = (Suit)1;
-                card6.number = (Number)14;
-                Card card7 = new Card();
-                card7.suit = (Suit)2;
-                card7.number = (Number)4;
+         public double FlushChance()
+         {
+             double result = 0;
+             result = this.flush * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                hand.Add(card1);
-                hand.Add(card2);
-                hand.Add(card3);
-                hand.Add(card4);
-                hand.Add(card5);
-                hand.Add(card6);
-                hand.Add(card7);
+             return result;
+         }
 
-                bool test = hand.ContainsFourOfAKind();
-            }
+         public double StraightChance()
+         {
+             double result = 0;
+             result = this.straight * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-            public static void DealHoldEmHand(Deck deck, int players, int position)
-            {
-                // Creates lists for player's cards, other players' cards, and shared community cards.
-                List<Card> players_cards = new List<Card>();
-                List<List<Card>> others_cards = new List<List<Card>>();
-                List<Card> community_cards = new List<Card>();
+             return result;
+         }
 
-                // Simulates dealing cards for all players before the player.
-                int players_before = position - 1;
-                deck.DealCards(players_before * 2);
+         public double ThreeOfAKindChance()
+         {
+             double result = 0;
+             result = this.three_of_a_kind * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                // Deals cards to the player.
-                players_cards.AddRange(deck.DealCards(2));
+             return result;
+         }
 
-                // Finishes dealing cards to simulated players.
-                int players_after = players - position;
-                deck.DealCards(players_after * 2);
+         public double TwoPairChance()
+         {
+             double result = 0;
+             result = this.two_pair * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                // Burn a card.
-                deck.DealCard();
+             return result;
+         }
 
-                // Deal flop.
-                community_cards.AddRange(deck.DealCards(3));
+         public double PairChance()
+         {
+             double result = 0;
+             result = this.pair * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                // Burn a card.
-                deck.DealCard();
+             return result;
+         }
 
-                // Deal turn.
-                community_cards.Add(deck.DealCard());
+         public double HighCardChance()
+         {
+             double result = 0;
+             result = this.high_card * 100.00 / this.total_occurences;
+             result = Math.Round(result, 2);
 
-                // Burn a card.
-                deck.DealCard();
+             return result;
+         }
+     }
 
-                // Deal river.
-                community_cards.Add(deck.DealCard());
+     public class Game
+     {
+         static SqlConnection m_connection = null;
 
-                // Check hands.
-                string result = CheckHands(players_cards, community_cards);
+         public static void PlayGames(bool IsRunning)
+         {
+             Deck deck = new Deck();
+             m_connection = new SqlConnection ("Server=localhost;Database=texas;IntegratedSecurity=SSPI;MultipleActiveResultSets=true");
+             m_connection.Open();
 
-                // Update DB
-                UpdateDB(players, players_cards, community_cards, result);
-            }
+             //// Test code to ensure Deck class performs as expected.
+             //Hashtable ht = new Hashtable();
+             //int counter = 0;
 
-            public static void UpdateDB(int player_count, List<Card> pocket, List<Card> community, string result)
-            {
-                bool IsNew = false;
-                SqlCommand IsInDB = new SqlCommand("SELECT COUNT(*) FROM results WHERE pocket = @pocket AND flop = @flop AND turn = @turn AND river = @river", m_connection);
+             //foreach (Card card in deck.deck)
+             //{
+             //    try
+             //    {
+             //        ht.Add(card, card);
+             //        Console.WriteLine(counter + ". " + card.number + " of " + card.suit);
+             //        counter++;
+             //    }
+             //    catch
+             //    {
+             //        Console.WriteLine("Duplicate card in deck found: " + card.number + ", " + card.suit);
+             //    }
+             //}
 
-                pocket = pocket.Where(x => x != null).OrderBy(x => x.number).ThenBy(y => y.suit).ToList();
-                string pocket_string = "";
-                foreach (Card card in pocket)
-                {
-                    pocket_string += ConvertFromCardToDB(card) + ",";
-                }
-                pocket_string = pocket_string.Substring(0, pocket_string.Length - 1);
+             //TestCardCombinations();
 
-                string flop_string = "";
+             while (IsRunning)
+             {
+                 DealHoldEmHand(deck, 8, 5);
+                 deck = new Deck();
+             }
 
-                List<Card> flop = new List<Card>();
-                for (int i = 0; i < 3; i++)
-                {
-                    flop.Add(community[i]);
-                }
-                flop = flop.Where(x => x != null).OrderBy(x => x.number).ThenBy(y => y.suit).ToList();
+             m_connection.Close();
 
-                for (int i = 0; i < 3; i++)
-                {
-                    flop_string += ConvertFromCardToDB(flop[i]) + ",";
-                }
-                flop_string = flop_string.Substring(0, flop_string.Length - 1);
+             Console.WriteLine("Finished.");
+             Console.ReadKey();
+         }
 
-                string turn_string = ConvertFromCardToDB(community[3]);
-                turn_string = turn_string.Substring(0, turn_string.Length);
+         public static void TestCardCombinations()
+         {
+             // Deal 7 cards and test combinations.
+             List<Card> hand = new List<Card>();
+             Card card1 = new Card();
+             card1.suit = (Suit)0;
+             card1.number = (Number)14;
+             Card card2 = new Card();
+             card2.suit = (Suit)1;
+             card2.number = (Number)6;
+             Card card3 = new Card();
+             card3.suit = (Suit)2;
+             card3.number = (Number)14;
+             Card card4 = new Card();
+             card4.suit = (Suit)3;
+             card4.number = (Number)14;
+             Card card5 = new Card();
+             card5.suit = (Suit)0;
+             card5.number = (Number)9;
+             Card card6 = new Card();
+             card6.suit = (Suit)1;
+             card6.number = (Number)14;
+             Card card7 = new Card();
+             card7.suit = (Suit)2;
+             card7.number = (Number)4;
 
-                string river_string = ConvertFromCardToDB(community[4]);
-                river_string = river_string.Substring(0, river_string.Length);
+             hand.Add(card1);
+             hand.Add(card2);
+             hand.Add(card3);
+             hand.Add(card4);
+             hand.Add(card5);
+             hand.Add(card6);
+             hand.Add(card7);
 
-                IsInDB.Parameters.AddWithValue("@pocket", pocket_string);
-                IsInDB.Parameters.AddWithValue("@flop", flop_string);
-                IsInDB.Parameters.AddWithValue("@turn", turn_string);
-                IsInDB.Parameters.AddWithValue("@river", river_string);
+             bool test = hand.ContainsFourOfAKind();
+         }
 
-                int count = (int)IsInDB.ExecuteScalar();
+         public static void DealHoldEmHand(Deck deck, int players, int position)
+         {
+             // Creates lists for player's cards, other players' cards, and shared community cards.
+             List<Card> players_cards = new List<Card>();
+             List<List<Card>> others_cards = new List<List<Card>>();
+             List<Card> community_cards = new List<Card>();
 
-                SqlCommand update_command;
+             // Simulates dealing cards for all players before the player.
+             int players_before = position - 1;
+             deck.DealCards(players_before * 2);
 
-                if (count > 0)
-                {
-                    update_command = new SqlCommand("UPDATE results SET " + result + " = " + result + " + 1 WHERE pocket = @pocket AND flop = @flop AND turn = @turn AND river = @river", m_connection);
-                }
-                else
-                {
-                    IsNew = true;
-                    update_command = new SqlCommand("INSERT INTO results (player_count, pocket, flop, turn, river, royal_flush, straight_flush, four_of_a_kind, full_house, flush, straight, three_of_a_kind, two_pair, pair, high_card) VALUES (@player_count, @pocket, @flop, @turn, @river, @royal_flush, @straight_flush, @four_of_a_kind, @full_house, @flush, @straight, @three_of_a_kind, @two_pair, @pair, @high_card)", m_connection);
-                }
+             // Deals cards to the player.
+             players_cards.AddRange(deck.DealCards(2));
 
-                update_command.Parameters.AddWithValue("@player_count", player_count);
-                update_command.Parameters.AddWithValue("@pocket", pocket_string);
-                update_command.Parameters.AddWithValue("@flop", flop_string);
-                update_command.Parameters.AddWithValue("@turn", turn_string);
-                update_command.Parameters.AddWithValue("@river", river_string);
-                update_command.Parameters.AddWithValue("@royal_flush", 0);
-                update_command.Parameters.AddWithValue("@straight_flush", 0);
-                update_command.Parameters.AddWithValue("@four_of_a_kind", 0);
-                update_command.Parameters.AddWithValue("@full_house", 0);
-                update_command.Parameters.AddWithValue("@flush", 0);
-                update_command.Parameters.AddWithValue("@straight", 0);
-                update_command.Parameters.AddWithValue("@three_of_a_kind", 0);
-                update_command.Parameters.AddWithValue("@two_pair", 0);
-                update_command.Parameters.AddWithValue("@pair", 0);
-                update_command.Parameters.AddWithValue("@high_card", 0);
+             // Finishes dealing cards to simulated players.
+             int players_after = players - position;
+             deck.DealCards(players_after * 2);
+
+             // Burn a card.
+             deck.DealCard();
+
+             // Deal flop.
+             community_cards.AddRange(deck.DealCards(3));
+
+             // Burn a card.
+             deck.DealCard();
+
+             // Deal turn.
+             community_cards.Add(deck.DealCard());
+
+             // Burn a card.
+             deck.DealCard();
+
+             // Deal river.
+             community_cards.Add(deck.DealCard());
+
+             // Check hands.
+             string result = CheckHands(players_cards, community_cards);
+
+             // Update DB
+             UpdateDB(players, players_cards, community_cards, result);
+         }
+
+         public static void UpdateDB(int player_count, List<Card> pocket, List<Card> community, string result)
+         {
+             bool IsNew = false;
+             SqlCommand IsInDB = new SqlCommand("SELECT COUNT(*) FROM results WHERE pocket = @pocket AND flop = @flop AND turn = @turn ANd river = @river", m_connection);
+
+             pocket = pocket.Where(x => x != null).OrderBy(x => x.number).ThenBy(y => y.suit).ToList();
+             string pocket_string = "";
+             foreach (Card card in pocket)
+             {
+                 pocket_string += ConvertFromCardToDB(card) + ",";
+             }
+             pocket_string = pocket_string.Substring(0, pocket_string.Length - 1);
+
+             string flop_string = "";
+
+             List<Card> flop = new List<Card>();
+             for (int i = 0; i < 3; i++)
+             {
+                 flop.Add(community[i]);
+             }
+             flop = flop.Where(x => x != null).OrderBy(x => x.number).ThenBy(y => y.suit).ToList();
+
+             for (int i = 0; i < 3; i++)
+             {
+                 flop_string += ConvertFromCardToDB(flop[i]) + ",";
+             }
+             flop_string = flop_string.Substring(0, flop_string.Length - 1);
+
+             string turn_string = ConvertFromCardToDB(community[3]);
+             turn_string = turn_string.Substring(0, turn_string.Length);
+
+             string river_string = ConvertFromCardToDB(community[4]);
+             river_string = river_string.Substring(0, river_string.Length);
+
+             IsInDB.Parameters.AddWithValue("@pocket", pocket_string);
+             IsInDB.Parameters.AddWithValue("@flop", flop_string);
+             IsInDB.Parameters.AddWithValue("@turn", turn_string);
+             IsInDB.Parameters.AddWithValue("@river", river_string);
+
+             int count = (int)IsInDB.ExecuteScalar();
+
+             SqlCommand update_command;
+
+             if (count > 0)
+             {
+                 update_command = new SqlCommand("UPDATE results SET " + result + " = " + result + "+1WHEREpocket=@pocketANflop  @flop AND turn = @turn AND river = @river", m_connection);
+             }
+             else
+             {
+                 IsNew = true;
+                 update_command = new SqlCommand("INSERT INTO resu  (player_count,pocket,flop,turn,river,royal_flush,straight_flush,four_of_a_kind,full_house,flush,strih  ,hee_  of_a_kind,two_pair,    pair, high_card)VAL    (@player_count@pocket,@flop,@turn,@river,@royal_flush,@straight_flush,@four_of_a_kind,@full_house,@flush,@st    raight,@three_of_a_kind,@two_pair,@pair,@high_card)", m_connection);
+             }
+
+             update_command.Parameters.AddWithValue("@player_count", player_count);
+             update_command.Parameters.AddWithValue("@pocket", pocket_string);
+             update_command.Parameters.AddWithValue("@flop", flop_string);
+             update_command.Parameters.AddWithValue("@turn", turn_string);
+             update_command.Parameters.AddWithValue("@river", river_string);
+             update_command.Parameters.AddWithValue("@royal_flush", 0);
+             update_command.Parameters.AddWithValue("@straight_flush", 0);
+             update_command.Parameters.AddWithValue("@four_of_a_kind", 0);
+             update_command.Parameters.AddWithValue("@full_house", 0);
+             update_command.Parameters.AddWithValue("@flush", 0);
+             update_command.Parameters.AddWithValue("@straight", 0);
+             update_command.Parameters.AddWithValue("@three_of_a_kind", 0);
+             update_command.Parameters.AddWithValue("@two_pair", 0);
+             update_command.Parameters.AddWithValue("@pair", 0);
+             update_command.Parameters.AddWithValue("@high_card", 0);
 
 
-                update_command.ExecuteNonQuery();
+             update_command.ExecuteNonQuery();
 
-                if (IsNew == true)
-                {
-                    UpdateDB(player_count, pocket, community, result);
-                }
-            }
+             if (IsNew == true)
+             {
+                 UpdateDB(player_count, pocket, community, result);
+             }
+         }
 
-            public static string ConvertFromCardToDB(Card card)
-            {
-                string result = "";
-                result += ((int)card.number).ToString() + ":" + ((int)card.suit).ToString();
+         public static string ConvertFromCardToDB(Card card)
+         {
+             string result = "";
+             result += ((int)card.number).ToString() + ":" + ((int)card.suit).ToString();
 
-                return result;
-            }
+             return result;
+         }
 
-            public static string CheckHands(List<Card> player, List<Card> community)
-            {
-                List<Card> complete = new List<Card>();
-                complete.AddRange(player);
-                complete.AddRange(community);
+         public static string CheckHands(List<Card> player, List<Card> community)
+         {
+             List<Card> complete = new List<Card>();
+             complete.AddRange(player);
+             complete.AddRange(community);
 
-                if (complete.ContainsRoyalFlush())
-                {
-                    return "royal_flush";
-                }
+             if (complete.ContainsRoyalFlush())
+             {
+                 return "royal_flush";
+             }
 
-                if (complete.ContainsStraightFlush())
-                {
-                    return "straight_flush";
-                }
+             if (complete.ContainsStraightFlush())
+             {
+                 return "straight_flush";
+             }
 
-                if (complete.ContainsFourOfAKind())
-                {
-                    return "four_of_a_kind";
-                }
+             if (complete.ContainsFourOfAKind())
+             {
+                 return "four_of_a_kind";
+             }
 
-                if (complete.ContainsFullHouse())
-                {
-                    return "full_house";
-                }
+             if (complete.ContainsFullHouse())
+             {
+                 return "full_house";
+             }
 
-                if (complete.ContainsFlush())
-                {
-                    return "flush";
-                }
+             if (complete.ContainsFlush())
+             {
+                 return "flush";
+             }
 
-                if (complete.ContainsStraight())
-                {
-                    return "straight";
-                }
+             if (complete.ContainsStraight())
+             {
+                 return "straight";
+             }
 
-                if (complete.ContainsThreeOfAKind())
-                {
-                    return "three_of_a_kind";
-                }
+             if (complete.ContainsThreeOfAKind())
+             {
+                 return "three_of_a_kind";
+             }
 
-                if (complete.ContainsTwoPair())
-                {
-                    return "two_pair";
-                }
+             if (complete.ContainsTwoPair())
+             {
+                 return "two_pair";
+             }
 
-                if (complete.ContainsPair())
-                {
-                    return "pair";
-                }
+             if (complete.ContainsPair())
+             {
+                 return "pair";
+             }
 
-                return "high_card";
-            }
+             return "high_card";
+         }
 
-            public static void PrintHand(List<Card> hand)
-            {
-                int counter = 0;
-                foreach (Card card in hand)
-                {
-                    Console.WriteLine(counter + ". " + card.number + " of " + card.suit);
-                    counter++;
-                }
-                Console.WriteLine();
-            }
-        }
-    }
+         public static void PrintHand(List<Card> hand)
+         {
+             int counter = 0;
+             foreach (Card card in hand)
+             {
+                 Console.WriteLine(counter + ". " + card.number + " of " + card.suit);
+                 counter++;
+             }
+             Console.WriteLine();
+         }
+     }
 }

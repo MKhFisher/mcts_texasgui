@@ -7,3 +7,12 @@ c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texashold
 c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem-gui.exe
 c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem-gui.pdb
 c:\users\michael\documents\visual studio 2013\Projects\texasholdem-gui\texasholdem-gui\obj\Debug\texasholdem_gui.Form1.resources
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\bin\Debug\texasholdem-gui.exe.config
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\obj\Debug\texasholdem-gui.exe
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\obj\Debug\texasholdem-gui.csprojResolveAssemblyReference.cache
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\obj\Debug\texasholdem_gui.Form1.resources
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\obj\Debug\texasholdem_gui.Properties.Resources.resources
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\obj\Debug\texasholdem-gui.csproj.GenerateResource.Cache
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\bin\Debug\texasholdem-gui.exe
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\bin\Debug\texasholdem-gui.pdb
+C:\Users\MichaelF\Documents\Visual Studio 2013\Projects\mcts_texasgui\mcts_texasgui\texasholdem-gui\obj\Debug\texasholdem-gui.pdb
